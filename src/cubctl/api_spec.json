@@ -1,0 +1,1062 @@
+[
+  {
+    "name": "all",
+    "method": "GET",
+    "params": [],
+    "query": [
+      {
+        "name": "full",
+        "type": "integer",
+        "descr": "`1` вернуть весь список, по умолчанию уникальные карточки без истории",
+        "value": "0"
+      },
+      {
+        "name": "type",
+        "type": "string",
+        "descr": "Тип закладок `book` `history` `like` `wath`",
+        "value": "book"
+      }
+    ],
+    "errors": [
+      {
+        "name": "300",
+        "type": "",
+        "descr": "Ошибка в данных"
+      }
+    ],
+    "category": "bookmarks",
+    "codes": {},
+    "url": "bookmarks/all",
+    "title": "Все закладки",
+    "descr": "Возвращает список закладок пользователя",
+    "token": 1
+  },
+  {
+    "name": "add",
+    "method": "POST",
+    "params": [
+      {
+        "name": "data",
+        "type": "string",
+        "descr": "JSON карточки *r доступные поля для записи: \\n\\n `poster_path` `overview` `release_date` `genre_ids` `id` `original_title` `original_language` `title` `backdrop_path` `popularity` `vote_count` `vote_average` `imdb_id` `kinopoisk_id` `original_name` `name` `first_air_date` `origin_country` `status` `pg` `release_quality` `imdb_rating` `kp_rating` `source` `number_of_seasons` `number_of_episodes` `next_episode_to_air` `img` `poster` `background_image`",
+        "value": "{...}"
+      },
+      {
+        "name": "type",
+        "type": "string",
+        "descr": "Тип `book` `history` `like` `wath` *r",
+        "value": "book"
+      }
+    ],
+    "query": [],
+    "errors": [
+      {
+        "name": "300",
+        "type": "",
+        "descr": "Ошибка в данных"
+      },
+      {
+        "name": "555",
+        "type": "",
+        "descr": "Нет премиум доступа"
+      }
+    ],
+    "category": "bookmarks",
+    "codes": {},
+    "url": "bookmarks/add",
+    "title": "Добавить",
+    "descr": "Добавить карточку в закладки",
+    "token": 1,
+    "responce": "{\"secuses\":true,\"bookmark\":{\"id\":23,\"type\":\"book\",\"card_id\":56674,\"data\":\"{...}\",\"profile\":45643,\"time\":1738742866163}}"
+  },
+  {
+    "name": "remove",
+    "method": "POST",
+    "params": [
+      {
+        "name": "id",
+        "type": "integer",
+        "descr": "ID записи",
+        "value": "9938938"
+      },
+      {
+        "name": "list",
+        "type": "array",
+        "descr": "Или список id записей [455,333,7854,3222...]",
+        "value": "[455,333]"
+      }
+    ],
+    "query": [],
+    "errors": [
+      {
+        "name": "300",
+        "type": "",
+        "descr": "Ошибка в данных"
+      }
+    ],
+    "category": "bookmarks",
+    "codes": {},
+    "url": "bookmarks/remove",
+    "title": "Удалить",
+    "descr": "Удалить карточку из закладок",
+    "token": 1,
+    "responce": "{\"secuses\":true}"
+  },
+  {
+    "name": "season",
+    "method": "POST",
+    "params": [
+      {
+        "name": "id",
+        "type": "integer",
+        "descr": "ID карточки *r",
+        "value": "95396"
+      },
+      {
+        "name": "original_name",
+        "type": "string",
+        "descr": "Оригинальное название карточки, используется для генерации хеша тайм-кода *r",
+        "value": "Severance"
+      },
+      {
+        "name": "season",
+        "type": "integer",
+        "descr": "Номер сезона *r",
+        "value": "1"
+      }
+    ],
+    "query": [],
+    "errors": [],
+    "category": "card",
+    "codes": {},
+    "url": "card/season",
+    "title": "Сезон",
+    "descr": "Получисть список серий из сезона",
+    "token": 1
+  },
+  {
+    "name": "subscribed",
+    "method": "POST",
+    "params": [
+      {
+        "name": "id",
+        "type": "integer",
+        "descr": "ID карточки *r",
+        "value": "95396"
+      }
+    ],
+    "query": [],
+    "errors": [
+      {
+        "name": "466",
+        "type": "",
+        "descr": "Нет подписок"
+      }
+    ],
+    "category": "card",
+    "codes": {},
+    "url": "card/subscribed",
+    "title": "Подписка",
+    "descr": "Проверить есть ли подписка на перевод",
+    "token": 1
+  },
+  {
+    "name": "translations",
+    "method": "POST",
+    "params": [
+      {
+        "name": "id",
+        "type": "integer",
+        "descr": "ID карточки *r",
+        "value": "95396"
+      },
+      {
+        "name": "season",
+        "type": "integer",
+        "descr": "Номер сезона  *r",
+        "value": "1"
+      }
+    ],
+    "query": [],
+    "errors": [],
+    "category": "card",
+    "codes": {},
+    "url": "card/translations",
+    "title": "Переводы",
+    "descr": "Получить список переводов к сериалу",
+    "token": 1
+  },
+  {
+    "name": "unsubscribe",
+    "method": "POST",
+    "params": [
+      {
+        "name": "id",
+        "type": "integer",
+        "descr": "ID карточки *r",
+        "value": "95396"
+      }
+    ],
+    "query": [],
+    "errors": [
+      {
+        "name": "500",
+        "type": "",
+        "descr": "Возникла непредвиденная ошибка или не подписались на перевод"
+      }
+    ],
+    "category": "card",
+    "codes": {},
+    "url": "card/unsubscribe",
+    "title": "Отписка",
+    "descr": "Отписатся от перевода",
+    "token": 1
+  },
+  {
+    "name": "list",
+    "method": "GET",
+    "params": [],
+    "query": [
+      {
+        "name": "page",
+        "type": "integer",
+        "descr": "Номер страницы",
+        "value": "1"
+      },
+      {
+        "name": "cid",
+        "type": "integer",
+        "descr": "ID пользователя для фильтрации его коллекций"
+      },
+      {
+        "name": "category",
+        "type": "string",
+        "descr": "Сортировка: `week` `month` `top` `new` `big` `all` `top-collector`",
+        "value": "new"
+      }
+    ],
+    "errors": [],
+    "category": "collections",
+    "codes": {},
+    "url": "collections/list",
+    "title": "Список коллекций",
+    "descr": "Возвращает публичный список коллекций или коллекции конкретного пользователя",
+    "token": 1,
+    "responce": "{\"secuses\":true,\"results\":[],\"total\":20}"
+  },
+  {
+    "name": "roll",
+    "method": "GET",
+    "params": [],
+    "query": [
+      {
+        "name": "cid",
+        "type": "integer",
+        "descr": "ID пользователя",
+        "value": "0"
+      }
+    ],
+    "errors": [],
+    "category": "collections",
+    "codes": {},
+    "url": "collections/roll",
+    "title": "Коллекции (roll)",
+    "descr": "Возвращает 20 последних публичных коллекций. Если передан `cid` совпадающий с токеном — возвращает все коллекции пользователя",
+    "token": 1,
+    "responce": "{\"secuses\":true,\"results\":[],\"total\":20}"
+  },
+  {
+    "name": "top-collectors",
+    "method": "GET",
+    "params": [],
+    "query": [],
+    "errors": [],
+    "category": "collections",
+    "codes": {},
+    "url": "collections/top-collectors",
+    "title": "Топ коллекционеров",
+    "descr": "Возвращает топ 10 пользователей с наибольшим количеством публичных коллекций, отсортированных по количеству коллекций и суммарным лайкам",
+    "responce": "{\"secuses\":true,\"results\":[{\"id\":1,\"icon\":\"\",\"collections_count\":15,\"total_liked\":320,\"total_views\":5000,\"total_items\":200,\"username\":\"user\"}]}"
+  },
+  {
+    "name": "view",
+    "method": "GET",
+    "params": [
+      {
+        "name": "id",
+        "type": "integer",
+        "descr": "ID коллекции *r",
+        "value": "123"
+      }
+    ],
+    "query": [
+      {
+        "name": "page",
+        "type": "integer",
+        "descr": "Номер страницы",
+        "value": "1"
+      }
+    ],
+    "errors": [
+      {
+        "name": "340",
+        "type": "",
+        "descr": "Что-то пошло не так"
+      }
+    ],
+    "category": "collections",
+    "codes": {},
+    "url": "collections/view/{id}",
+    "title": "Просмотр коллекции",
+    "descr": "Возвращает список карточек из коллекции с пагинацией",
+    "responce": "{\"secuses\":true,\"page\":1,\"results\":[],\"total_pages\":5}"
+  },
+  {
+    "name": "add",
+    "method": "POST",
+    "params": [
+      {
+        "name": "id",
+        "type": "integer",
+        "descr": "ID коллекции *r",
+        "value": "1"
+      },
+      {
+        "name": "card_id",
+        "type": "integer",
+        "descr": "ID карточки *r",
+        "value": "12345"
+      },
+      {
+        "name": "card_type",
+        "type": "string",
+        "descr": "Тип карточки `movie` | `tv` *r",
+        "value": "movie"
+      }
+    ],
+    "query": [],
+    "errors": [
+      {
+        "name": "300",
+        "type": "",
+        "descr": "Коллекция не найдена / Карточка уже добавлена в коллекцию"
+      }
+    ],
+    "category": "collections",
+    "codes": {},
+    "url": "collections/add",
+    "title": "Добавить карточку",
+    "descr": "Добавить карточку в коллекцию",
+    "token": 1,
+    "responce": "{\"secuses\":true}"
+  },
+  {
+    "name": "background",
+    "method": "POST",
+    "params": [
+      {
+        "name": "id",
+        "type": "integer",
+        "descr": "ID коллекции *r",
+        "value": "1"
+      },
+      {
+        "name": "backdrop_path",
+        "type": "string",
+        "descr": "Путь к изображению обложки *r",
+        "value": "/images/backdrop.jpg"
+      }
+    ],
+    "query": [],
+    "errors": [
+      {
+        "name": "300",
+        "type": "",
+        "descr": "Ошибка в данных / Коллекция не найдена"
+      }
+    ],
+    "category": "collections",
+    "codes": {},
+    "url": "collections/background",
+    "title": "Обложка коллекции",
+    "descr": "Установить обложку (backdrop) для коллекции",
+    "token": 1,
+    "responce": "{\"secuses\":true}"
+  },
+  {
+    "name": "change",
+    "method": "POST",
+    "params": [
+      {
+        "name": "id",
+        "type": "integer",
+        "descr": "ID коллекции *r",
+        "value": "1"
+      },
+      {
+        "name": "title",
+        "type": "string",
+        "descr": "Новое название *r",
+        "value": "Моя"
+      },
+      {
+        "name": "public",
+        "type": "integer",
+        "descr": "Публичная `1` или приватная `0`",
+        "value": "1"
+      }
+    ],
+    "query": [],
+    "errors": [
+      {
+        "name": "300",
+        "type": "",
+        "descr": "Коллекция не найдена / Заполните все поля / В коллекции должно быть не менее 10 карточек для публикации / Укажите обложку для коллекции / В названии коллекции запрещено использовать слова: ..."
+      }
+    ],
+    "category": "collections",
+    "codes": {},
+    "url": "collections/change",
+    "title": "Изменить коллекцию",
+    "descr": "Изменить название и статус публикации коллекции",
+    "token": 1,
+    "responce": "{\"secuses\":true}"
+  },
+  {
+    "name": "create",
+    "method": "POST",
+    "params": [
+      {
+        "name": "name",
+        "type": "string",
+        "descr": "Название коллекции *r",
+        "value": "Моя"
+      }
+    ],
+    "query": [],
+    "errors": [
+      {
+        "name": "300",
+        "type": "",
+        "descr": "Укажите название коллекции"
+      }
+    ],
+    "category": "collections",
+    "codes": {},
+    "url": "collections/create",
+    "title": "Создать коллекцию",
+    "descr": "Создать новую коллекцию пользователя",
+    "token": 1,
+    "responce": "{\"secuses\":true,\"collection\":{\"id\":1,\"title\":\"Моя коллекция\",\"hpu\":\"moya-kollekciya\",\"items_count\":0,\"views\":0,\"username\":\"user\",\"backdrop_path\":\"\",\"icon\":\"\"}}"
+  },
+  {
+    "name": "liked",
+    "method": "POST",
+    "params": [
+      {
+        "name": "id",
+        "type": "integer",
+        "descr": "ID коллекции *r",
+        "value": "1"
+      },
+      {
+        "name": "dir",
+        "type": "integer",
+        "descr": "Направление: `1` лайк, `-1` дизлайк *r",
+        "value": "1"
+      }
+    ],
+    "query": [],
+    "errors": [
+      {
+        "name": "500",
+        "type": "",
+        "descr": "Что-то пошло не так"
+      }
+    ],
+    "category": "collections",
+    "codes": {},
+    "url": "collections/liked",
+    "title": "Лайк коллекции",
+    "descr": "Поставить или убрать лайк коллекции. Ограничение: один голос с IP-адреса за 10 минут",
+    "responce": "{\"secuses\":true}"
+  },
+  {
+    "name": "remove-card",
+    "method": "POST",
+    "params": [
+      {
+        "name": "id",
+        "type": "integer",
+        "descr": "ID коллекции *r",
+        "value": "1"
+      },
+      {
+        "name": "card_id",
+        "type": "integer",
+        "descr": "ID карточки *r",
+        "value": "12345"
+      },
+      {
+        "name": "card_type",
+        "type": "string",
+        "descr": "Тип карточки `movie` | `tv` *r",
+        "value": "movie"
+      }
+    ],
+    "query": [],
+    "errors": [
+      {
+        "name": "300",
+        "type": "",
+        "descr": "Коллекция не найдена"
+      }
+    ],
+    "category": "collections",
+    "codes": {},
+    "url": "collections/remove-card",
+    "title": "Удалить карточку из коллекции",
+    "descr": "Удалить конкретную карточку из коллекции",
+    "token": 1,
+    "responce": "{\"secuses\":true}"
+  },
+  {
+    "name": "remove",
+    "method": "POST",
+    "params": [
+      {
+        "name": "id",
+        "type": "integer",
+        "descr": "ID коллекции *r",
+        "value": "1"
+      }
+    ],
+    "query": [],
+    "errors": [
+      {
+        "name": "300",
+        "type": "",
+        "descr": "Коллекция не найдена"
+      }
+    ],
+    "category": "collections",
+    "codes": {},
+    "url": "collections/remove",
+    "title": "Удалить коллекцию",
+    "descr": "Удалить коллекцию и все карточки из неё",
+    "token": 1,
+    "responce": "{\"secuses\":true}"
+  },
+  {
+    "name": "add",
+    "method": "POST",
+    "params": [
+      {
+        "name": "code",
+        "type": "string",
+        "descr": "Код доступа полученный на сайте <a href=\"{site}/add\" target=\"_blank\" class=\"link\">{site}/add</a> *r",
+        "value": "код"
+      }
+    ],
+    "query": [],
+    "errors": [],
+    "category": "device",
+    "codes": {},
+    "url": "device/add",
+    "title": "Авторизация",
+    "descr": "Запрос на получения токена для доступа к API."
+  },
+  {
+    "name": "all",
+    "method": "GET",
+    "params": [],
+    "query": [],
+    "errors": [],
+    "category": "notice",
+    "codes": {},
+    "url": "notice/all",
+    "title": "Получить",
+    "descr": "Возвращает список уведомлений",
+    "token": 1
+  },
+  {
+    "name": "clear",
+    "method": "GET",
+    "params": [],
+    "query": [],
+    "errors": [],
+    "category": "notice",
+    "codes": {},
+    "url": "notice/clear",
+    "title": "Очисить",
+    "descr": "Пометить все уведомления как прочитанны.",
+    "token": 1
+  },
+  {
+    "name": "all",
+    "method": "GET",
+    "params": [],
+    "query": [],
+    "errors": [],
+    "category": "notifications",
+    "codes": {},
+    "url": "notifications/all",
+    "title": "Получить",
+    "descr": "Возвращает список карточек с переводами на который вы <a href=\"{site}/notifications\" class=\"link\" target=\"_blank\">подписались</a>",
+    "token": 1
+  },
+  {
+    "name": "add",
+    "method": "POST",
+    "params": [
+      {
+        "name": "data",
+        "type": "string",
+        "descr": "JSON карточки *r доступные поля для записи: \\n\\n `poster_path` `overview` `release_date` `genre_ids` `id` `original_title` `original_language` `title` `backdrop_path` `popularity` `vote_count` `vote_average` `imdb_id` `kinopoisk_id` `original_name` `name` `first_air_date` `origin_country` `status` `pg` `release_quality` `imdb_rating` `kp_rating` `source` `number_of_seasons` `number_of_episodes` `next_episode_to_air` `img` `poster` `background_image`"
+      },
+      {
+        "name": "voice",
+        "type": "string",
+        "descr": "Название перевода, например `LostFilm`, получить список <a href=\"#card-translations\" class=\"link\">доступных переводов</a> *r"
+      },
+      {
+        "name": "season",
+        "type": "integer",
+        "descr": "На каком сезоне остановились (по умолчанияю 1)"
+      },
+      {
+        "name": "episode",
+        "type": "integer",
+        "descr": "На какой серии остановились (по умолчанияю 1)"
+      }
+    ],
+    "query": [],
+    "errors": [
+      {
+        "name": "300",
+        "type": "",
+        "descr": "Ошибка в данных"
+      },
+      {
+        "name": "limited",
+        "type": "",
+        "descr": "Превышен лимит уведомлений"
+      }
+    ],
+    "category": "notifications",
+    "codes": {},
+    "url": "notifications/add",
+    "title": "Добавить",
+    "descr": "Добавить карточку для получения уведомлений о выходе перевода.",
+    "token": 1
+  },
+  {
+    "name": "remove",
+    "method": "POST",
+    "params": [
+      {
+        "name": "id",
+        "type": "integer",
+        "descr": "ID уведомления *r",
+        "value": "1"
+      }
+    ],
+    "query": [],
+    "errors": [],
+    "category": "notifications",
+    "codes": {},
+    "url": "notifications/remove",
+    "title": "Удалить",
+    "descr": "Удалить уведомление",
+    "token": 1
+  },
+  {
+    "name": "status",
+    "method": "POST",
+    "params": [
+      {
+        "name": "id",
+        "type": "integer",
+        "descr": "ID уведомления *r",
+        "value": "1"
+      },
+      {
+        "name": "status",
+        "type": "integer",
+        "descr": "Статус уведомления, доступно `0` или `1` *r",
+        "value": "1"
+      }
+    ],
+    "query": [],
+    "errors": [],
+    "category": "notifications",
+    "codes": {},
+    "url": "notifications/status",
+    "title": "Статус",
+    "descr": "Установить статус на получения уведомления",
+    "token": 1
+  },
+  {
+    "name": "all",
+    "method": "GET",
+    "params": [],
+    "query": [],
+    "errors": [],
+    "category": "profiles",
+    "codes": {},
+    "url": "profiles/all",
+    "title": "Все профили",
+    "descr": "Возвращает список профилей пользователя",
+    "token": 1
+  },
+  {
+    "name": "change",
+    "method": "POST",
+    "params": [
+      {
+        "name": "id",
+        "type": "integer",
+        "descr": "ID профиля *r",
+        "value": "0"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "descr": "Название профиля *r",
+        "value": "название"
+      }
+    ],
+    "query": [],
+    "errors": [
+      {
+        "name": "300",
+        "type": "",
+        "descr": "Ошибка в данных"
+      }
+    ],
+    "category": "profiles",
+    "codes": {},
+    "url": "profiles/change",
+    "title": "Изменить",
+    "descr": "Изменить название в профиле",
+    "token": 1
+  },
+  {
+    "name": "create",
+    "method": "POST",
+    "params": [
+      {
+        "name": "name",
+        "type": "string",
+        "descr": "Название профиля *r",
+        "value": "название"
+      }
+    ],
+    "query": [],
+    "errors": [
+      {
+        "name": "300",
+        "type": "",
+        "descr": "Ошибка в данных"
+      },
+      {
+        "name": "200",
+        "type": "",
+        "descr": "Создано максимальное количество профилей"
+      }
+    ],
+    "category": "profiles",
+    "codes": {},
+    "url": "profiles/create",
+    "title": "Создать",
+    "descr": "Создать новый профиль для пользователя",
+    "token": 1
+  },
+  {
+    "name": "remove",
+    "method": "POST",
+    "params": [
+      {
+        "name": "id",
+        "type": "integer",
+        "descr": "ID профиля *r",
+        "value": "0"
+      }
+    ],
+    "query": [],
+    "errors": [
+      {
+        "name": "300",
+        "type": "",
+        "descr": "Ошибка в данных"
+      }
+    ],
+    "category": "profiles",
+    "codes": {},
+    "url": "profiles/remove",
+    "title": "Удалить",
+    "descr": "Удалить профиль и все закладки с профиля",
+    "token": 1
+  },
+  {
+    "name": "add",
+    "method": "GET",
+    "params": [
+      {
+        "name": "id",
+        "type": "string",
+        "descr": "Тип + id карточки, например `movie_id` | `tv_id`",
+        "value": "tv_125988"
+      },
+      {
+        "name": "type",
+        "type": "string",
+        "descr": "Тип рекции `fire` | `nice` | `think` | `bore` | `shit`",
+        "value": "fire"
+      }
+    ],
+    "query": [],
+    "errors": [
+      {
+        "name": "300",
+        "type": "",
+        "descr": "Ошибка в данных"
+      },
+      {
+        "name": "500",
+        "type": "",
+        "descr": "Непредвиденная ошибка"
+      }
+    ],
+    "category": "reactions",
+    "codes": {},
+    "url": "reactions/add/{id}/{type}",
+    "title": "Отметить",
+    "descr": "Отметить карточку реакцией",
+    "responce": "{\"secuses\":true}"
+  },
+  {
+    "name": "get",
+    "method": "GET",
+    "params": [
+      {
+        "name": "id",
+        "type": "string",
+        "descr": "Тип + id карточки, например `movie_id` | `tv_id`",
+        "value": "tv_125988"
+      }
+    ],
+    "query": [],
+    "errors": [],
+    "category": "reactions",
+    "codes": {},
+    "url": "reactions/get/{id}",
+    "title": "Получить",
+    "descr": "Получить реакции карточки",
+    "responce": "{\"secuses\":true,\"result\":[{\"card_id\":\"movie_539972\",\"type\":\"fire\",\"counter\":1963},{\"card_id\":\"movie_539972\",\"type\":\"think\",\"counter\":1075},{\"card_id\":\"movie_539972\",\"type\":\"nice\",\"counter\":1423},{\"card_id\":\"movie_539972\",\"type\":\"shit\",\"counter\":1322},{\"card_id\":\"movie_539972\",\"type\":\"bore\",\"counter\":704}]}"
+  },
+  {
+    "name": "all",
+    "method": "GET",
+    "params": [],
+    "query": [
+      {
+        "name": "full",
+        "type": "integer",
+        "descr": "Если `1` — возвращает полный список без ограничения в 50 записей",
+        "value": "1"
+      }
+    ],
+    "errors": [],
+    "category": "timeline",
+    "codes": {},
+    "url": "timeline/all",
+    "title": "Получить тайм-коды",
+    "descr": "Возвращает тайм-коды текущего профиля. По умолчанию последние 50 записей. Требует CUB Premium — без него возвращает пустой объект",
+    "token": 1,
+    "responce": "{\"secuses\":true,\"timelines\":{\"hash\":{\"time\":3920,\"duration\":8160,\"percent\":48,\"hash\":\"hash\"},\"hash\":{\"time\":1540,\"duration\":2700,\"percent\":57,\"hash\":\"hash\"}}}"
+  },
+  {
+    "name": "changelog",
+    "method": "GET",
+    "params": [],
+    "query": [
+      {
+        "name": "since",
+        "type": "integer",
+        "descr": "Timestamp (мс) начиная с которого возвращать изменения *r",
+        "value": "1743499000000"
+      }
+    ],
+    "errors": [],
+    "category": "timeline",
+    "codes": {},
+    "url": "timeline/changelog",
+    "title": "Изменения тайм-кодов",
+    "descr": "Возвращает тайм-коды изменённые после указанного момента времени. Используется для синхронизации между устройствами. Требует CUB Premium — без него возвращает пустой объект",
+    "token": 1,
+    "responce": "{\"secuses\":true,\"version\":1743500000000,\"timelines\":{\"hash\":{\"time\":3920,\"duration\":8160,\"percent\":48,\"hash\":\"hash\"}}}"
+  },
+  {
+    "name": "dump",
+    "method": "GET",
+    "params": [],
+    "query": [],
+    "errors": [],
+    "category": "timeline",
+    "codes": {},
+    "url": "timeline/dump",
+    "title": "Экспорт тайм-кодов",
+    "descr": "Возвращает полный список всех тайм-кодов профиля включая поле `version` (timestamp последнего изменения). Используется для резервного копирования. Требует CUB Premium — без него возвращает пустой объект",
+    "token": 1,
+    "responce": "{\"secuses\":true,\"version\":1743500000000,\"timelines\":{\"hash\":{\"time\":3920,\"duration\":8160,\"percent\":48,\"hash\":\"hash\"},\"hash\":{\"time\":1540,\"duration\":2700,\"percent\":57,\"hash\":\"hash\"}}}"
+  },
+  {
+    "name": "update",
+    "method": "POST",
+    "params": [
+      {
+        "name": "hash",
+        "type": "string",
+        "descr": "Уникальный хеш карточки *r CODE(hash)",
+        "value": "40938374"
+      },
+      {
+        "name": "time",
+        "type": "integer",
+        "descr": "Текущая позиция воспроизведения в секундах *r",
+        "value": "3920"
+      },
+      {
+        "name": "duration",
+        "type": "integer",
+        "descr": "Общая длительность в секундах *r",
+        "value": "8160"
+      },
+      {
+        "name": "percent",
+        "type": "integer",
+        "descr": "Процент просмотра *r",
+        "value": "48"
+      },
+      {
+        "name": "profile",
+        "type": "integer",
+        "descr": "ID профиля *r",
+        "value": "12"
+      }
+    ],
+    "query": [],
+    "errors": [
+      {
+        "name": "400",
+        "type": "",
+        "descr": "Некорректные данные"
+      },
+      {
+        "name": "403",
+        "type": "",
+        "descr": "Требуется CUB Premium для использования тайм-кодов"
+      }
+    ],
+    "category": "timeline",
+    "codes": {
+      "hash": "// Пример как получить hash тайм-кода\r\nfunction hash(input){\r\n    let str  = (input || '') + ''\r\n    let hash = 0;\r\n\r\n    if (str.length == 0) return hash;\r\n\r\n    for (let i = 0; i < str.length; i++) {\r\n        let char = str.charCodeAt(i);\r\n\r\n        hash = ((hash<<5)-hash)+char;\r\n        hash = hash & hash; // Convert to 32bit integer\r\n    }\r\n\r\n    return Math.abs(hash) + '';\r\n}\r\n\r\n// Если фильм\r\nlet timecode_hash = hash(card.original_title)\r\n\r\n// Если это сериал\r\nlet episode = 1\r\nlet season  = 1\r\nlet timecode_hash = hash([season, season > 10 ? ':' : '', episode, card.original_name].join(''))"
+    },
+    "url": "timeline/update",
+    "title": "Сохранить тайм-код",
+    "descr": "Сохранить или обновить тайм-код для карточки. Требует CUB Premium",
+    "token": 1,
+    "responce": "{\"secuses\":true}"
+  },
+  {
+    "name": "find",
+    "method": "GET",
+    "params": [],
+    "query": [
+      {
+        "name": "email",
+        "type": "string",
+        "descr": "Email пользователя *r",
+        "value": "email@gmail.com"
+      }
+    ],
+    "errors": [],
+    "category": "users",
+    "codes": {},
+    "url": "users/find",
+    "title": "Найти пользователя",
+    "descr": "Найти данные пользователя по email"
+  },
+  {
+    "name": "get",
+    "method": "GET",
+    "params": [],
+    "query": [],
+    "errors": [],
+    "category": "users",
+    "codes": {},
+    "url": "users/get",
+    "title": "Получить информацию",
+    "descr": "Возвращает данные авторизованного пользователя",
+    "token": 1
+  },
+  {
+    "name": "give",
+    "method": "POST",
+    "params": [
+      {
+        "name": "to",
+        "type": "integer",
+        "descr": "ID пользователя кому подарить *r",
+        "value": "1"
+      },
+      {
+        "name": "days",
+        "type": "integer",
+        "descr": "Количество дней, минимально `5 дней` *r",
+        "value": "30"
+      },
+      {
+        "name": "password",
+        "type": "string",
+        "descr": "Ваш пароль для потверждения *r",
+        "value": "password"
+      }
+    ],
+    "query": [],
+    "errors": [
+      {
+        "name": "455",
+        "type": "",
+        "descr": "Нельзя подарить самому себе"
+      },
+      {
+        "name": "456",
+        "type": "",
+        "descr": "У вас нет CUB Premium"
+      },
+      {
+        "name": "457",
+        "type": "",
+        "descr": "Пароль не совпадает"
+      },
+      {
+        "name": "458",
+        "type": "",
+        "descr": "Недостаточно дней CUB Premium"
+      },
+      {
+        "name": "459",
+        "type": "",
+        "descr": "Пользователь не найден"
+      }
+    ],
+    "category": "users",
+    "codes": {},
+    "url": "users/give",
+    "title": "Подарить CUB Premium",
+    "descr": "Подарить от себя CUB Premium другому пользователю",
+    "token": 1
+  }
+]

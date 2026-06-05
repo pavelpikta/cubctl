@@ -1,0 +1,13 @@
+# Local secrets and backups
+accounts.env
+scripts/accounts.env
+backups/
+*.json
+!src/cubctl/api_spec.json
+
+# Python
+__pycache__/
+*.egg-info/
+.pytest_cache/
+dist/
+build/
